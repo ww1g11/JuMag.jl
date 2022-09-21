@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Equations · JuMag.jl</title><script data-outdated-warner src="../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../">JuMag.jl</a></span></div><form class="docs-search" action="../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../">JuMag.jl</a></li><li><a class="tocitem" href="../tutorial/">Tutorial</a></li><li class="is-active"><a class="tocitem" href>Equations</a><ul class="internal"><li><a class="tocitem" href="#Energies-and-effective-field"><span>Energies and effective field</span></a></li></ul></li><li><a class="tocitem" href="../notes/">Notes</a></li><li><a class="tocitem" href="../functions/">References</a></li><li><a class="tocitem" href="../questions/">Questions</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>Equations</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Equations</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ww1g11/JuMag.jl/blob/master/docs/src/equations.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Equations"><a class="docs-heading-anchor" href="#Equations">Equations</a><a id="Equations-1"></a><a class="docs-heading-anchor-permalink" href="#Equations" title="Permalink"></a></h1><h2 id="Energies-and-effective-field"><a class="docs-heading-anchor" href="#Energies-and-effective-field">Energies and effective field</a><a id="Energies-and-effective-field-1"></a><a class="docs-heading-anchor-permalink" href="#Energies-and-effective-field" title="Permalink"></a></h2><h4 id="Atomistic-spin-model"><a class="docs-heading-anchor" href="#Atomistic-spin-model">Atomistic spin model</a><a id="Atomistic-spin-model-1"></a><a class="docs-heading-anchor-permalink" href="#Atomistic-spin-model" title="Permalink"></a></h4><p>In the atomistic spin model, the effective field can be computed from</p><p class="math-container">\[\mathbf{H}_{\mathrm{eff}}=-\frac{1}{\mu_s} \frac{\partial \mathcal{H}}{\partial \mathbf{m}}\]</p><p>where <span>$\mathcal{H}$</span> is the total Hamiltonian including the exchange interaction, Dzyaloshinskii-Moriya interaction, dipolar interaction, anisotropy interaction and Zeeman interaction. The exchange interaction is given by</p><p class="math-container">\[\mathcal{H}_\mathrm{ex} = -J \sum_{\langle i, j\rangle} \vec{m}_{i} \cdot \vec{m}_{j}\]</p><p>and the Dzyaloshinskii-Moriya interaction reads</p><p class="math-container">\[\mathcal{H}_\mathrm{dmi} =  \sum_{\langle i, j\rangle}  \vec{D}_{i j} \cdot\left(\vec{m}_{i} \times \vec{m}_{j}\right)\]</p><p>and anisotropy</p><p class="math-container">\[\mathcal{H}_\mathrm{an} = - K \sum_{i}\left(m_{i}^{z}\right)^{2}\]</p><p>and the zeeman field</p><p class="math-container">\[\mathcal{H}_\mathrm{ze} =  - \mu_s \vec{m}_i \cdot \vec{H}\]</p><h4 id="Micromagnetic-model"><a class="docs-heading-anchor" href="#Micromagnetic-model">Micromagnetic model</a><a id="Micromagnetic-model-1"></a><a class="docs-heading-anchor-permalink" href="#Micromagnetic-model" title="Permalink"></a></h4><p>In micromagnetics, the effective field can be computed from the total micromagnetic energy</p><p class="math-container">\[\vec{H}_{\mathrm{eff}}=-\frac{1}{\mu_{0} M_{s}} \frac{\delta E}{\delta \vec{m}}\]</p><p>The typical energy terms are</p><ul><li><strong>Exchange energy</strong></li></ul><p class="math-container">\[  E_\mathrm{ex} = \int_{V} A (\nabla \vec{m})^2 \mathrm{d}V
+  ```
+
+  where $(\nabla \vec{m})^{2}=\left(\nabla m_{x}\right)^{2}+\left(\nabla m_{y}\right)^{2}+\left(\nabla m_{z}\right)^{2}$. So the corresponding effective field is
+
+  ```math
+  \vec{H}_{\mathrm{ex}}=\frac{2 A}{\mu_{0} M_{s}} \nabla^{2} \vec{m}
+  ```
+
+- **Zeeman energy**
+
+  ```math
+  E_\mathrm{ex} = -  \mu_0 \int_{V}  \vec{H} \cdot \vec{M} \mathrm{d}V
+  ```
+
+  as expected, the effective field is $\vec{H}$.
+
+- **Anisotropy**
+
+  The uniaxial anisotropy energy is given by
+
+  ```math
+  E_\mathrm{anis} = -\int_{V} K_{u} (\vec{m} \cdot \hat{u})^2 \, dV
+  ```
+
+  from which the effective field can be computed as
+
+  ```math
+  \vec{H}_{\mathrm{an}}=\frac{2 K_u}{\mu_0 M_s}\left(\vec{m} \cdot \hat{u}\right) \hat{u}
+  ```
+
+- **Cubic Anisotropy**
+
+  The cubic anisotropy energy is given by
+
+  ```math
+  E_\mathrm{cubic} = -\int_{V} K_c (m_x^4 + m_y^4 + m_z^4) \, dV
+  ```
+
+  and thus the corresponding effective field reads
+
+  ```math
+  \vec{H}_{\mathrm{cubic}}= \frac{4 K_c}{\mu_0 M_s}  
+  \left( m_x^3 \mathbf{e}_x + m_y^3 \mathbf{e}_y + m_z^3 \mathbf{e}_z \right)
+  ```
+
+- **Bulk DMI energy** The Bulk DMI energy reads
+
+  ```math
+  E_{\mathrm{dmi}} = \int_V D \vec{m} \cdot (\nabla \times \vec{m}) \, \mathrm{d}V
+  ```
+
+  so the effective field is
+
+  ```math
+  \vec{H}_\mathrm{D}=-\frac{2 D}{\mu_{0} M_{s}}(\nabla \times \vec{m})
+  ```
+
+- **Magnetostatic energy**
+
+  ```math
+  E_{\mathrm{d}}=-\frac{\mu_{0}}{2} \int_{V} \vec{H}_{\mathrm{d}}(\mathbf{r}) \cdot
+  \vec{M}(\mathbf{r}) d V
+  ```
+
+  ```math
+  \vec{H}_{\mathrm{d}}(\mathbf{r})=\frac{1}{4 \pi}\left(\int_{V} \rho_{m}\left(\mathbf{r}^{\prime}\right) \frac{\mathbf{r}-\mathbf{r}^{\prime}}{\left|\mathbf{r}-\mathbf{r}^{\prime}\right|^{3}} \mathrm{d}^{3} r^{\prime}+\int_{S} \sigma_{m}\left(\mathbf{r}^{\prime}\right) \frac{\mathbf{r}-\mathbf{r}^{\prime}}{\left|\mathbf{r}-\mathbf{r}^{\prime}\right|^{3}} \mathrm{d}^{2} r^{\prime}\right)
+  ```
+
+## LLG equation
+
+The driver `LLG` solves the standard LLG equation, which can be written as
+\]</p><p>math \frac{\partial \vec{m}}{\partial t} = - \gamma \vec{m} \times \vec{H} + \alpha \vec{m} \times  \frac{\partial \vec{m}}{\partial t}</p><pre><code class="nohighlight hljs">
+and the corresponding LL form is given by
+</code></pre><p>math (1+\alpha^2)\frac{\partial \vec{m}}{\partial t} = - \gamma \vec{m} \times \vec{H} - \alpha \gamma \vec{m} \times (\vec{m} \times \vec{H})</p><pre><code class="nohighlight hljs">
+## LLG equation with extensions
+
+The driver `LLG_STT` implements the LLG equation with zhang-li extension
+</code></pre><p>math \frac{\partial \vec{m}}{\partial t} = - \gamma \vec{m} \times \vec{H} + \alpha \vec{m} \times  \frac{\partial \vec{m}}{\partial t}</p><ul><li>(\vec{u} \cdot \nabla) \vec{m} - \beta [\vec{m}\times (\vec{u} \cdot \nabla)\vec{m}]</li></ul><pre><code class="nohighlight hljs">
+and the driver `LLG_CPP` implements the LLG equation with spin transfer torque
+for the current-perpendicular-to-plane (CPP) case,
+</code></pre><p>math \frac{\partial \vec{m}}{\partial t} = - \gamma \vec{m} \times \vec{H} + \alpha \vec{m} \times  \frac{\partial \vec{m}}{\partial t} - a_J \vec{m} \times (\vec{m} \times \vec{p})</p><ul><li>b_J \vec{m} \times \vec{p}</li></ul><pre><code class="nohighlight hljs">The spin valve structures and  spin orbit torques can use the `LLG_CPP` driver.
+
+The driver `LLG_STT_CPP` has put them together,
+</code></pre><p>math \frac{\partial \vec{m}}{\partial t} = - \gamma \vec{m} \times \vec{H} + \alpha \vec{m} \times  \frac{\partial \vec{m}}{\partial t}</p><ul><li>(\vec{u} \cdot \nabla) \vec{m} - \beta [\vec{m}\times (\vec{u} \cdot \nabla)\vec{m}] - a_J \vec{m} \times (\vec{m} \times \vec{p})</li><li>b_J \vec{m} \times \vec{p}</li></ul><pre><code class="nohighlight hljs">
+## SLLG equation
+
+The SLLG equation, i.e., LLG equation including the stochastic field $\mathbf{b}$, is given by
+</code></pre><p>math \frac{\partial \mathbf{m}}{\partial t} = - \gamma \mathbf{m} \times (\mathbf{H}_\mathrm{eff} +\mathbf{b}) + \alpha \mathbf{m} \times  \frac{\partial \mathbf{m}}{\partial t}</p><pre><code class="nohighlight hljs">The thermal fluctuation is assumed to be a Gaussian white noise, i.e., the thermal noise $\mathbf{b}$ obeys the  properties
+</code></pre><p>math \left&lt; \mathbf{b} \right&gt; = 0, \;\;\; \left&lt; \mathbf{b}<em>i^u,\mathbf{b}</em>j^v \right&gt; = 2 D \delta<em>{ij} \delta</em>{uv}</p><pre><code class="nohighlight hljs">
+where $i$ and $j$ are Cartesian indices, $u$ and $v$ indicate the magnetization components and $\left&lt; \cdot , \cdot \right&gt;$
+represents the average taken over different realizations of the fluctuating field. And
+</code></pre><p>math D = \frac{\alpha k<em>B T}{\gamma \mu</em>s}.</p><pre><code class="nohighlight hljs">
+For the micromagnetic case, $D$ is given as
+</code></pre><p>math D = \frac{\alpha k<em>B T}{\mu</em>0 M_s \gamma \Delta V}.</p><pre><code class="nohighlight hljs">which is equivalent to a stochastic field  
+</code></pre><p>math \mathbf{b}^u = \eta \sqrt \frac{2 \alpha k<em>B T}{\mu</em>0 M_s \gamma \Delta V dt}</p><pre><code class="nohighlight hljs">
+where $\eta$ is a random number follows the normal distribution.
+
+## Steepest descent method
+
+We provide a steepest descent energy minimization method for a complicated system, which is of the form
+</code></pre><p>math x<em>{k+1} = x</em>k + \alpha<em>k d</em>k</p><pre><code class="nohighlight hljs">
+where
+</code></pre><p>math d<em>k = - \nabla f(x</em>k)</p><pre><code class="nohighlight hljs">
+And for the micromagnetics, we have
+</code></pre><p>math \mathbf{m}<em>{k+1} = \mathbf{m}</em>{k} - {\tau}<em>k \mathbf{m}</em>k  \times (\mathbf{m}<em>k \times \mathbf{H}</em>{\mathrm{eff}})</p><pre><code class="nohighlight hljs">
+In practice, we use the following update rule to keep the magnetization vector normalized.
+</code></pre><p>math \boldsymbol{m}<em>{k+1}=\boldsymbol{m}</em>{k}-{\tau}<em>k \frac{\boldsymbol{m}</em>{k}+\boldsymbol{m}<em>{k+1}}{2} \times\left(\boldsymbol{m}</em>{k} \times \boldsymbol{H}<em>{\mathrm{eff}}\left(\boldsymbol{m}</em>{k}\right)\right)</p><pre><code class="nohighlight hljs"></code></pre><p>math \boldsymbol{m}<em>{k+1}^2 = \boldsymbol{m}</em>{k}^2</p><pre><code class="nohighlight hljs">
+From the equation we have:
+</code></pre><p>math (1+\frac{{\tau}<em>k^2}{4} \boldsymbol{f}</em>k^2)\mathbf{m}<em>{k+1} = (1-\frac{{\tau}</em>k^2}{4} \boldsymbol{f}<em>k^2)\mathbf{m}</em>{k} -  {\tau}<em>k \mathbf{g}</em>k</p><pre><code class="nohighlight hljs">
+where
+</code></pre><p>math \begin{aligned} \mathbf{f}<em>k&amp; = \mathbf{m}</em>k \times \mathbf{H}<em>{\mathrm{eff}} \\boldsymbol{g}</em>{k} &amp;=\boldsymbol{m}<em>{k} \times\left(\boldsymbol{m}</em>{k} \times \boldsymbol{H}_{\mathrm{eff}}\right) \end{aligned}</p><pre><code class="nohighlight hljs">
+The step size $\tau_k$ can be computed by
+</code></pre><p>math \tau<em>{k}^{1}=\frac{\sum</em>{i} \boldsymbol{s}<em>{k-1}^{i} \cdot \boldsymbol{s}</em>{k-1}^{i}}{\sum<em>{i} \boldsymbol{s}</em>{k-1}^{i} \cdot \boldsymbol{y}<em>{k-1}^{i}} \quad, \quad \tau</em>{k}^{2}=\frac{\sum<em>{i} \boldsymbol{s}</em>{k-1}^{i} \cdot \boldsymbol{y}<em>{k-1}^{i}}{\sum</em>{i} \boldsymbol{y}<em>{k-1}^{i} \cdot \boldsymbol{y}</em>{k-1}^{i}}</p><pre><code class="nohighlight hljs">
+where
+</code></pre><p>math \begin{aligned}  \boldsymbol{s}<em>{k-1} &amp;=\boldsymbol{m}</em>{k}-\boldsymbol{m}<em>{k-1} \ \boldsymbol{y}</em>{k-1} &amp;=\boldsymbol{g}<em>{k}-\boldsymbol{g}</em>{k-1} \end{aligned}</p><pre><code class="nohighlight hljs">
+## Monte Carlo Simulation
+
+For cubic mesh, the implemented energy reads
+</code></pre><p>math \mathcal{H} = - J \sum<em>{\langle \langle i, j\rangle \rangle} \vec{m}</em>{i} \cdot \vec{m}<em>{j} +\sum</em>{\langle \langle i, j \rangle \rangle }  \vec{D}<em>{i j} \cdot\left(\vec{m}</em>{i} \times \vec{m}_{j}\right)</p><ul><li>K \sum<em>{i}\left(\vec{u} \cdot \vec{m}</em>i\right)^2 - \sum<em>{i} \vec{H} \cdot \vec{m}</em>i</li></ul><pre><code class="nohighlight hljs">
+where $\vec{m}_i$ is unit vector of the classical spin at site _i_.
+
+For triangular mesh (2D), the system energy reads
+</code></pre><p>math H= \sum<em>{\langle i, j\rangle}  \vec{D}</em>{i j} \cdot\left(\vec{S}<em>{i} \times \vec{S}</em>{j}\right) -J \sum<em>{\langle i, j\rangle} \vec{S}</em>{i} \cdot \vec{S}<em>{j}- \lambda \sum</em>{\langle i, j\rangle} S<em>{i}^{z} S</em>{j}^{z} -K \sum<em>{i}\left(S</em>{i}^{z}\right)^{2}</p><pre><code class="nohighlight hljs">
+where
+</code></pre><p>math \vec{D}<em>{i j} = D \hat{z} \times \hat{r}</em>{ij}  + D_z^{j} \hat{z}</p><pre><code class="nohighlight hljs">
+## NEB (Nudged elastic band)
+
+NEB is a chain method to find the MEP (minimum energy path) between two states. To start, we need to construct a chain including several images (each image is a copy of the magnetization) and then relax the system. Two ends images that corresponding to the initial and final states will be pinned as they are the energy states given by the users. The system contain all free images will be relaxed to reduce the total energy, which is very similar to the case that relaxing the magnetic system using LLG equation if one disables the precession term. One significant difference is that the effective field in LLG equation is the functional derivative of the system energy with respect to magnetization while in NEB the effective field of image _n_ should also contain the influence of its neighbours (i.e., the images _n-1_ and _n+1_). This influence is described by the so-called tangents: only the perpendicaular part of the effective field is kept when relaxing the whole system.
+
+Assume that the whole system has _N_ images
+</code></pre><p>math \mathbf{Z} = [\mathbf{Y}<em>1, \mathbf{Y}</em>2, ..., \mathbf{Y}_N]</p><pre><code class="nohighlight hljs">
+where
+</code></pre><p>math \mathbf{Y}<em>i = [m</em>{1x}, m<em>{1y}, m</em>{1z}, ..., m<em>{nx}, m</em>{ny}, m_{nz}]</p><pre><code class="nohighlight hljs">
+each image has _n_ spins. To relax the system, we could solve the equation
+</code></pre><p>math \frac{\mathbf{Y}<em>i}{\partial t} = - \mathbf{Y}</em>i \times (\mathbf{Y}<em>i \times \mathbf{G}</em>i)</p><pre><code class="nohighlight hljs">
+where $\mathbf{G}_i$ is effective field that can be computed as
+</code></pre><p>math \mathbf{Y}<em>i = \mathbf{H}</em>i - (\mathbf{H}<em>i \cdot \mathbf{t}</em>i) \mathbf{t}<em>i +  \mathbf{F}</em>i</p><pre><code class="nohighlight hljs">
+The $\mathbf{H}_i$ is the normal micromagnetic effective field, $\mathbf{t}_i$ is the tangent and $\mathbf{F}_i$ is a force that can be used to adjust the distance between images.
+</code></pre><p>math  \mathbf{F}<em>i = k (|\mathbf{Y}</em>{i+1}-\mathbf{Y}<em>{i}|-|\mathbf{Y}</em>{i}-\mathbf{Y}<em>{i-1}|) \mathbf{t}</em>i</p><pre><code class="nohighlight hljs">
+The distance bewteen images $\mathbf{Y}_{i}$ and $\mathbf{Y}_{j}$ is defined as
+</code></pre><p>math  L = \left [ \sum<em>k (L</em>k^{i,j})^2 \right ] ^{1/2}</p><pre><code class="nohighlight hljs">
+where $L_k^{i,j}$ is the geodesic distance of point `k` that can be computed using Vincenty&#39;s formula.
+
+The tangents can be computed as follows
+</code></pre><p>math \mathbf{t}<em>i^+ =  \mathbf{Y}</em>{i+1}-\mathbf{Y}<em>{i}\
+\mathbf{t}</em>i^- =  \mathbf{Y}<em>{i}-\mathbf{Y}</em>{i-1}</p><pre><code class="nohighlight hljs">
+The detailed equations can be found @ [Journal of Chemical Physics 113, 22 (2000)] and [Computer Physics Communications 196 (2015) 335–347].
+
+## Eigenvalue Method
+
+Micromagnetic system and the corresponding atomistic model are the classical system. The resonance frequencies and the spatial resonance modes can be obtained using the eigenvalue method. In JuMag, we implemented a simple eigenvalue method for the following Hamiltonian of the atomistic model
+</code></pre><p>math \mathcal{H} = -J \sum<em>{\langle i, j\rangle} \vec{m}</em>{i} \cdot \vec{m}<em>{j} + \sum</em>{\langle i, j\rangle}  \vec{D}<em>{i j} \cdot\left(\vec{m}</em>{i} \times \vec{m}<em>{j}\right) - K \sum</em>{i}\left(m<em>{i}^{z}\right)^{2} - \mu</em>s \vec{m}_i \cdot \vec{H}</p><pre><code class="nohighlight hljs">
+For a given ground state or metastable spin configuration
+</code></pre><p>math \vec{m}_0=(\sin\theta \cos \phi, \sin\theta \sin \phi, \cos\theta)^T,</p><pre><code class="nohighlight hljs">
+one can construct a local coordinate system such that
+</code></pre><p>math \vec{m} = w \vec{m}<em>0 + u \vec{e}</em>\theta + v  \vec{e}_\phi,</p><pre><code class="nohighlight hljs">
+where $\vec{e}_\theta =(\cos \theta \cos \phi, \cos\theta \sin\phi,-\sin \theta)^T$ and $\vec{e}_\phi=(-\sin \phi, \cos\phi,0)^T$. In matrix form,
+</code></pre><p>math \begin{bmatrix} m<em>x \ m</em>y \ m_z  \end{bmatrix} =  \begin{bmatrix}  \cos \phi \cos \theta &amp; -\sin \phi &amp; \sin \theta \cos \phi \
+ \sin \phi \cos \theta &amp;  \cos \phi &amp; \sin \theta \sin \phi \
+ -\sin \theta &amp; 0 &amp;  \cos \theta \
+ \end{bmatrix}   \begin{bmatrix}  u \ v \ w  \end{bmatrix}.</p><pre><code class="nohighlight hljs">
+Under this transformation, the unperturbed spin configuration $\vec{m}_0$ corresponds to $u=0, v=0$ and $w=1$. In this local coordinate, the effective fields are given by
+</code></pre><p>math \vec{H}<em>\mathrm{eff} = - \frac{1}{\mu</em>s} \frac{\partial \mathcal{H}}{\partial \vec{m}} = - \frac{1}{\mu<em>s}\left(  \frac{\partial \mathcal{H}}{\partial w} \vec{m}</em>0 + \frac{\partial \mathcal{H}}{\partial u} \vec{e}<em>\theta + \frac{\partial \mathcal{H}}{\partial v} \vec{e}</em>\phi \right).</p><pre><code class="nohighlight hljs">
+Substituting the effective fields into the LLG equation, we obtain for the case that $\alpha=0$
+</code></pre><p>math \begin{matrix} \dot{u} = -\gamma (- w H<em>v + v H</em>w),\
+\dot{v} = -\gamma ( w H<em>u - u H</em>w), \end{matrix}</p><pre><code class="nohighlight hljs">
+where $H_w$, $H_u$ and $H_v$ are effective fields along $\vec{m}_0$, $\vec{e}_\theta$ and $\vec{e}_\phi$, respectively. To linearize the LLG equation, we assume $|u| \ll 1$, $|v| \ll 1$ and thus $w \approx 1- (1/2)(u^2+v^2)$. Moreover, we look for the solutions such that $u=\tilde{u}e^{-i\omega t}$ and $v=\tilde{v}e^{-i\omega t}$. Therefore, we arrive at
+</code></pre><p>math \begin{matrix}  -i \omega \mu<em>s  \tilde{u}  =  \gamma (\tilde{h}</em>v - \tilde{v} \tilde{H}<em>w) , \
+-i \omega \mu</em>s \tilde{v}  =  - \gamma (\tilde{h}<em>u-\tilde{u} \tilde{H}</em>w), \end{matrix}</p><pre><code class="nohighlight hljs">
+where we have ignored the higher-order terms. In addition, the above equation can be rewritten in a matrix form~\cite{Lin2014a}
+</code></pre><p>math \frac{i \omega \mu_s}{\gamma}   \begin{bmatrix} \vec{u} \ \vec{v}  \end{bmatrix} = \mathbf{A}    \begin{bmatrix} \vec{u} \ \vec{v}  \end{bmatrix},</p><pre><code class="nohighlight hljs">
+where we have introduced two vectors $\vec{u}=(\tilde{u}_1, \tilde{u}_2, ..., \tilde{u}_n)^T$ and $\vec{v}=(\tilde{v}_1, \tilde{v}_2, ..., \tilde{v}_n)^T$. Therefore, the normal modes of the system can be obtained through solving the eigenvalues of the matrix $\mathbf{A}$. The eigenvalues are pure imaginary numbers since $\omega$ is real. The related effective fields are given by
+</code></pre><p>math \begin{aligned} \tilde{H}<em>w = -(\partial \mathcal{H}^{(0)}/{\partial w}) \big|</em>{w=1} \
+\tilde{h}<em>u = -(\partial \mathcal{H}^{(2)}/{\partial u}) \big|</em>{w=1, u=\tilde{u}, v=\tilde{v}} \
+\tilde{h}<em>v = -(\partial \mathcal{H}^{(2)}/{\partial v}) \big|</em>{w=1, u=\tilde{u}, v=\tilde{v}} . \end{aligned} ```</p><ul><li><strong>Exchange interaction</strong></li></ul><p>```math   \begin{aligned}   \tilde{H}^\mathrm{ex}<em>{w, i} = J  \sum</em>j \left [ \cos \theta<em>i \cos \theta</em>j + \sin \theta<em>i \sin \theta</em>j  \cos(\phi<em>i-\phi</em>j) \right],\
+  \tilde{h}^\mathrm{ex}<em>{u, i} =  J \sum</em>j \left [ \tilde{u}<em>j \cos(\phi</em>i-\phi<em>j) \cos \theta</em>i \cos \theta<em>j + \tilde{u}</em>j \sin \theta<em>i \sin \theta</em>j + \tilde{v}<em>j \cos\theta</em>i \sin (\phi<em>i - \phi</em>j)  \right], \
+  \tilde{h}^\mathrm{an}<em>{v, i} =   J \sum</em>j \left [  -\tilde{u}<em>j \cos\theta</em>j \sin (\phi<em>i - \phi</em>j) + \tilde{v}<em>j \cos(\phi</em>i-\phi_j)  \right].   \end{aligned}   ```</p><ul><li><strong>DMI</strong></li></ul><p>```math   \begin{aligned}   \tilde{H}^\mathrm{dmi}<em>{w, i} =  \sum</em>{j \in X} D<em>{ij}  \left(  \sin \theta</em>j \sin \phi<em>j \cos \theta</em>i - \sin \theta<em>i \sin \phi</em>i \cos \theta<em>j \right) + \
+     \sum</em>{j \in Y} D<em>{ij}  \left(  \sin \theta</em>i \cos \phi<em>i \cos \theta</em>j - \sin \theta<em>j \cos \phi</em>j \cos \theta<em>i  \right) + \
+     \sum</em>{j \in Z} D<em>{ij}   \left [  \sin \theta</em>i \sin \theta<em>j \sin(\phi</em>i-\phi_j) \right],   \end{aligned}   ```</p><p>where <span>$D_{ij}=D\mathrm{sgn}(j-i)$</span> with <span>$\mathrm{sgn}(x)$</span> the sign function. The sets <span>$X$</span>, <span>$Y$</span> and <span>$Z$</span> represent the neighbours of site <span>$i$</span> in <span>$x$</span>-, <span>$y$</span>- and <span>$z$</span>-axis. Meanwhile, <span>$\tilde{h}^\mathrm{dmi}_{u, i}$</span> and <span>$\tilde{h}^\mathrm{dmi}_{v, i}$</span> are given by</p><p>```math   \begin{aligned}   \tilde{h}^\mathrm{dmi}<em>{u, i} =  \sum</em>{j \in X} D<em>{ij} \left(   \tilde{u}</em>j \sin \theta<em>j \sin \phi</em>i \cos \theta<em>i - \tilde{u}</em>j \sin \theta<em>i \sin \phi</em>j \cos \theta<em>j - \tilde{v}</em>j \sin \theta<em>i \cos\phi</em>j \right) +\
+  \sum<em>{j\in Y} D</em>{ij} \left (\tilde{u}<em>j \sin \theta</em>i \cos \phi<em>j \cos \theta</em>j - \tilde{u}<em>j \sin \theta</em>j \cos \phi<em>i \cos \theta</em>i - \tilde{v}<em>j \sin \theta</em>i \sin\phi<em>j  \right) + \
+  \sum</em>{j\in Z} D<em>{ij} \cos \theta</em>i  \left [ \tilde{u}<em>j  \cos \theta</em>j \sin(\phi<em>i- \phi</em>j) -\tilde{v}<em>j \cos(\phi</em>i-\phi<em>j)  \right ],\
+  \tilde{h}^\mathrm{dmi}</em>{v, i} = \sum<em>{j \in X} D</em>{ij}  \tilde{u}<em>j \sin \theta</em>j \cos\phi<em>i + \textstyle \sum</em>{j \in Y} D<em>{ij} \tilde{v}</em>j \sin \theta<em>j  \sin\phi</em>i + \
+                  {\sum<em>{j \in Z}} D</em>{ij} \left[ \tilde{u}<em>j  \cos \theta</em>j  \cos(\phi<em>i -\phi</em>j) + \tilde{v}<em>j \sin (\phi</em>i-\phi_j) \right].   \end{aligned}   ```</p><ul><li><strong>Anisotropy</strong> For anisotropies with <span>$\mathcal{H}_{an} = - \sum_{i} (K_x m_{x,i}^2 + K_z m_{z,i}^2)$</span>, these fields are given by</li></ul><p>```math   \begin{aligned}   \tilde{H}^\mathrm{an}<em>{w, i} = 2K</em>x\cos^2 \phi<em>i \sin^2 \theta</em>i +  2K<em>z \cos^2 \theta</em>i, \
+  \tilde{h}^\mathrm{an}<em>{u, i} =  2K</em>x \cos \phi<em>i \cos \theta</em>i (\tilde{u}<em>i \cos\phi</em>i \cos \theta<em>i - \tilde{v}</em>i \sin\phi<em>i) +2 K</em>z \tilde{u}<em>i \sin^2\theta</em>i, \
+  \tilde{h}^\mathrm{an}<em>{v, i} = 2K</em>x \sin \phi<em>i (-\tilde{u}</em>i \cos\phi<em>i \cos \theta</em>i + \tilde{v}<em>i \sin\phi</em>i ).   \end{aligned}   ```</p><ul><li><strong>Zeeman Field</strong> For a static external field <span>$\vec{H}=(H_x, H_y, H_z)$</span>, one obtains <span>$\tilde{h}_u = \tilde{h}_v = 0$</span> and <span>$\tilde{H}^a_{w, i} = H_z \cos \theta_i + H_x \cos \phi_i \sin \theta_i + H_y \sin \phi_i \sin \theta_i$</span>.</li></ul></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../tutorial/">« Tutorial</a><a class="docs-footer-nextpage" href="../notes/">Notes »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Wednesday 21 September 2022 22:11">Wednesday 21 September 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
