@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Micromagnetic Standard Problem 4 · JuMag.jl</title><script data-outdated-warner src="../../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.045/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.24/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../../assets/documenter.js"></script><script src="../../../siteinfo.js"></script><script src="../../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../../assets/themeswap.js"></script><script src="../../../assets/init.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../../">JuMag.jl</a></span></div><form class="docs-search" action="../../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../../">JuMag.jl</a></li><li><a class="tocitem" href="../../../tutorial/">Tutorial</a></li><li><a class="tocitem" href="../../../equations/">Equations</a></li><li><a class="tocitem" href="../../../notes/">Notes</a></li><li><span class="tocitem">Examples</span><ul><li><input class="collapse-toggle" id="menuitem-5-1" type="checkbox" checked/><label class="tocitem" for="menuitem-5-1"><span class="docs-label">Micromagnetics</span><i class="docs-chevron"></i></label><ul class="collapsed"><li class="is-active"><a class="tocitem" href>Micromagnetic Standard Problem 4</a></li><li><a class="tocitem" href="../stoner_wohlfarth/">Stoner–Wohlfarth model</a></li></ul></li></ul></li><li><a class="tocitem" href="../../../developer/">Developer&#39;s guide</a></li><li><a class="tocitem" href="../../../functions/">References</a></li><li><a class="tocitem" href="../../../questions/">Questions</a></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Examples</a></li><li><a class="is-disabled">Micromagnetics</a></li><li class="is-active"><a href>Micromagnetic Standard Problem 4</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Micromagnetic Standard Problem 4</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/ww1g11/JuMag.jl/blob/master/docs/src/examples/micromagnetics/std4.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Micromagnetic-Standard-Problem-4"><a class="docs-heading-anchor" href="#Micromagnetic-Standard-Problem-4">Micromagnetic Standard Problem 4</a><a id="Micromagnetic-Standard-Problem-4-1"></a><a class="docs-heading-anchor-permalink" href="#Micromagnetic-Standard-Problem-4" title="Permalink"></a></h1><p><a href="../std4.jl"><img src="https://img.shields.io/badge/download-julia-brightgreen.svg" alt="Source code"/></a> <a href="https://nbviewer.jupyter.org/github/ww1g11/JuMag.jl/blob/gh-pages/dev/examples/micromagnetics/std4.ipynb"><img src="https://img.shields.io/badge/show-nbviewer-579ACA.svg" alt="notebook"/></a> <img src="https://img.shields.io/badge/Author-Weiwei%20Wang-blue" alt="Author"/> <img src="https://img.shields.io/date/1664668800" alt="Update time"/></p><p>We import the necessary modules</p><pre><code class="language- hljs">using JuMag
+using Printf
+using NPZ</code></pre><p>We use the double float precision in the simulation</p><pre><code class="language-julia hljs">JuMag.cuda_using_double(true)</code></pre><p>The geometry of the studied system is a film of thickness t=3 nm, length L=500 nm and width d=125 nm.</p><pre><code class="language-julia hljs">mesh =  FDMeshGPU(nx=200, ny=50, nz=1, dx=2.5e-9, dy=2.5e-9, dz=3e-9)</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">FDMeshGPU{Float64}(2.5e-9, 2.5e-9, 3.0e-9, 200, 50, 1, 10000, false, false, false, 1.8750000000000001e-26)</code></pre><p>The first step is to relax the system, after which we should obtain a &#39;S&#39; state.</p><pre><code class="language-julia hljs">function relax_system(mesh)
+  #Create a simulation with &#39;SD&#39; driver
+  sim = Sim(mesh, name=&quot;std4_relax&quot;, driver=&quot;SD&quot;)
+
+  set_Ms(sim, 8.0e5)
+  sim.driver.min_tau = 1e-10
+
+  add_exch(sim, 1.3e-11)
+  add_demag(sim)
+
+  init_m0(sim, (1, 0.25, 0.1))
+
+  relax(sim, maxsteps=5000, stopping_dmdt=0.01)
+  npzwrite(&quot;std4_m0.npy&quot;, Array(sim.spin))
+end</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">relax_system (generic function with 1 method)</code></pre><p>The second step is to apply an external field starting from the obtained &#39;S&#39; state in previous step.</p><pre><code class="language-julia hljs">function apply_field1(mesh)
+  sim = Sim(mesh, name=&quot;std4_dyn&quot;)
+  set_Ms(sim, 8.0e5)
+  sim.driver.alpha = 0.02
+  sim.driver.gamma = 2.211e5
+
+  mT = 0.001 / (4*pi*1e-7)
+  add_exch(sim, 1.3e-11)
+  add_demag(sim)
+  add_zeeman(sim, (-24.6*mT, 4.3*mT, 0))
+
+  init_m0(sim, npzread(&quot;std4_m0.npy&quot;))
+
+  for i=1:100
+    t = 1e-11*i
+    run_until(sim, t)
+    @info @sprintf(&quot;Run step2 up to time %g&quot;, t)
+  end
+end</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">apply_field1 (generic function with 1 method)</code></pre><p>Run the steps 1 and 2.</p><pre><code class="language-julia hljs">println(&quot;Start to run step1 !&quot;)
+relax_system(mesh)
+println(&quot;Start to run step2 !&quot;)
+apply_field1(mesh)
+println(&quot;Done!&quot;)</code></pre><p>Finally, we plot the time evolution of the magnetization using the plot_m function</p><pre><code class="language- hljs">using DelimitedFiles
+using CairoMakie
+
+function plot_m()
+    folder = @__DIR__
+    data = readdlm(folder*&quot;/assets/std4_dyn.txt&quot;, skipstart=2)
+    oommf = readdlm(folder*&quot;/assets/std4_oommf.txt&quot;)
+
+    fig = Figure(resolution = (800, 480))
+    ax = Axis(fig[1, 1],
+        xlabel = &quot;Time (ns)&quot;,
+        ylabel = &quot;m&quot;
+    )
+
+    lines!(ax, oommf[:,1]*1e9, oommf[:,2], label=&quot;OOMMF&quot;)
+    lines!(ax, oommf[:,1]*1e9, oommf[:,3])
+    lines!(ax, oommf[:,1]*1e9, oommf[:,4])
+
+    scatter!(ax, data[:,2]*1e9, data[:,4], markersize = 6, label=&quot;JuMag&quot;)
+    scatter!(ax, data[:,2]*1e9, data[:,5], markersize = 6)
+    scatter!(ax, data[:,2]*1e9, data[:,6], markersize = 6)
+
+    axislegend()
+
+    return fig
+
+end
+
+plot_m()</code></pre><hr/><p><em>This page was generated using <a href="https://github.com/johnnychen94/DemoCards.jl">DemoCards.jl</a> and <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../../notes/">« Notes</a><a class="docs-footer-nextpage" href="../stoner_wohlfarth/">Stoner–Wohlfarth model »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.23 on <span class="colophon-date" title="Tuesday 4 October 2022 09:18">Tuesday 4 October 2022</span>. Using Julia version 1.7.2.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
