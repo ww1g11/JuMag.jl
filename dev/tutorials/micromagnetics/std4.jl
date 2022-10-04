@@ -42,19 +42,20 @@ function apply_field1(mesh)
   end
 end
 
-println("Start to run step1 !")
-relax_system(mesh)
-println("Start to run step2 !")
-apply_field1(mesh)
-println("Done!")
+if !isfile("std4_m0.npy")
+  relax_system(mesh)
+end
+if !isfile("std4_dyn.txt")
+  apply_field1(mesh)
+end
 
 using DelimitedFiles
 using CairoMakie
 
 function plot_m()
     folder = @__DIR__
-    data = readdlm(folder*"/assets/std4_dyn.txt", skipstart=2)
-    oommf = readdlm(folder*"/assets/std4_oommf.txt")
+    data = readdlm("std4_dyn.txt", skipstart=2)
+    oommf = readdlm("assets/std4_oommf.txt")
 
     fig = Figure(resolution = (800, 480))
     ax = Axis(fig[1, 1],
