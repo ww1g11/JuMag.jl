@@ -23,7 +23,7 @@ function relax_system(mesh)
 end
 
 function apply_field1(mesh)
-  sim = Sim(mesh, name="std4_dyn")
+  sim = Sim(mesh, name="std4")
   set_Ms(sim, 8.0e5)
   sim.driver.alpha = 0.02
   sim.driver.gamma = 2.211e5
@@ -45,7 +45,7 @@ end
 if !isfile("std4_m0.npy")
   relax_system(mesh)
 end
-if !isfile("std4_dyn.txt")
+if !isfile("std4_llg.txt")
   apply_field1(mesh)
 end
 
@@ -54,7 +54,7 @@ using CairoMakie
 
 function plot_m()
     folder = @__DIR__
-    data = readdlm("std4_dyn.txt", skipstart=2)
+    data = readdlm("std4_llg.txt", skipstart=2)
     oommf = readdlm("assets/std4_oommf.txt")
 
     fig = Figure(resolution = (800, 480))
