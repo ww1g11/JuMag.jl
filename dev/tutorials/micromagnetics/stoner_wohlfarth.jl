@@ -41,7 +41,7 @@ using CairoMakie
 
 function plot_loop()
     folder = @__DIR__
-    data = readdlm(folder*"/sw_cubic.txt", skipstart=2)
+    data = readdlm(folder*"/sw_cubic_sd.txt", skipstart=2)
     m, H = data[:, 3], data[:, 8]
 
     fig = Figure(resolution = (800, 500))
@@ -50,10 +50,8 @@ function plot_loop()
         ylabel = "mx"
     )
 
-    lines!(ax, H, m, color = :blue)
-    scatter!(ax, H, m, markersize = 6, color = :blue)
-    lines!(ax, -H, -m, color = :blue)
-    scatter!(ax, -H, -m, markersize = 6, color = :blue)
+    scatterlines!(ax, H, m, markersize = 6, color = :blue, markercolor = :orange)
+    scatterlines!(ax, -H, -m, markersize = 6, color = :blue, markercolor = :orange)
 
     expected = 39788.736 # A/m
     vlines!(ax, [expected, -expected], color = :red, linestyle = :dash)
