@@ -18,4 +18,3 @@ println("Demag Energy: ",sum(demag.energy), " J")
 println("Zeeman Energy: ",sum(zeeman.energy), " J")
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
-

@@ -63,4 +63,3 @@ end
 plot_spatial_m()
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
-

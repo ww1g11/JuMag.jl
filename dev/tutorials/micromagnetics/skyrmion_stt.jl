@@ -28,4 +28,3 @@ if !isfile("assets/skx.mp4")
 end
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
-
