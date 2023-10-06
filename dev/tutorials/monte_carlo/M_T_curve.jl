@@ -1,5 +1,6 @@
 using JuMag
 
+
 JuMag.cuda_using_double(true)
 
 function relax_system_single(T)
@@ -28,7 +29,7 @@ function relax_system_single(T)
 end
 
 function relax_system()
-  f = open("M_H.txt", "w")
+  f = open("assets/M_H.txt", "w")
   write(f, "#T(K)     m \n")
   for T = 10:20:500
       println("Running for $T ...")
@@ -38,8 +39,38 @@ function relax_system()
   close(f)
 end
 
-if !isfile("M_H.txt")
-  #relax_system()
+if filesize("assets/M_H.txt") == 0
+  relax_system()
 end
+
+
+using DelimitedFiles
+using CairoMakie
+
+function plot_m_H()
+
+  fig = Figure(resolution = (400, 300))
+  ax = Axis(fig[1, 1],
+      xlabel = "T (K)",
+      ylabel = "m"
+  )
+
+  data = readdlm("assets/M_H.txt", skipstart=1)
+  sc1 = scatter!(ax, data[:, 1], data[:, 2], markersize = 10, label="M-T curve")
+  sc1.color = :transparent
+  sc1.strokewidth = 1
+  sc1.strokecolor = :purple
+  lines!(ax, data[:, 1], data[:, 2])
+
+
+  axislegend()
+
+  #save("M_T.png", fig)
+
+  return fig
+
+end
+
+plot_m_H()
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
